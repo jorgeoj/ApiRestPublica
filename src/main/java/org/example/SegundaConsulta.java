@@ -33,6 +33,16 @@ public class SegundaConsulta {
     private static String obtenerIdSerie() {
         String idSerie = "";
         try {
+            /*
+            Esto es otra forma de sacarlo con otra request (solo con el nombre de la serie)
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://moviesminidatabase.p.rapidapi.com/series/idbyTitle/Dragon%20Ball/"))
+                    .header("X-RapidAPI-Key", APIConfig.API_KEY)
+                    .header("X-RapidAPI-Host", "moviesminidatabase.p.rapidapi.com")
+                    .method("GET", HttpRequest.BodyPublishers.noBody())
+                    .build();
+            */
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://moviesminidatabase.p.rapidapi.com/series/byYear/1995/"))
                     .header("X-RapidAPI-Key", APIConfig.API_KEY)
@@ -51,7 +61,6 @@ public class SegundaConsulta {
                 if ("Dragon Ball".equalsIgnoreCase(title)) {
                     // Almacena el ID de la serie
                     idSerie = serie.getString("imdb_id");
-                    //System.out.println(idSerie);
                     break;  // Termina la iteración una vez que se encuentra la serie "Dragon Ball"
                 }
             }
