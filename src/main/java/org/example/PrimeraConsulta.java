@@ -41,23 +41,6 @@ public class PrimeraConsulta {
         // Mostrar la cantidad de series de Dragon Ball registradas
         System.out.println("Cantidad de series de Dragon Ball registradas: " + resultsArray.length());
         // Mostrar la respuesta JSON formateada
-        System.out.println(jsonResponse.toString(3)); // El 3 es el num de espacios para usar como sangría
+        System.out.println(jsonResponse.toString(2)); // El 2 es el num de espacios para usar como sangría
     }
-
-    /*
-    public static void main(String[] args) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://moviesminidatabase.p.rapidapi.com/series/idbyTitle/Dragon%20ball/"))
-                .header("X-RapidAPI-Key", APIConfig.API_KEY)
-                .header("X-RapidAPI-Host", "moviesminidatabase.p.rapidapi.com")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
-        JSONObject json = new JSONObject(response.body());
-
-        System.out.println(json.toString(2));
-    }
-    */
 }
