@@ -8,10 +8,21 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+/**
+ * Clase que realiza una consulta para obtener información sobre la película "Poltergeist"
+ * registrada en el año 1982 y luego obtiene detalles sobre los premios recibidos por la película.
+ */
 public class SextaConsulta {
     // Consulta: De ese mismo año es la película Postergeist, el primer gran éxito de Steven Spielberg como productor,
     // que participó en los premios Oscars al año siguiente sin ser ganadora. ¿A qué apartado fue nominada?
     // ¿Que otro premio ganó ese año?
+
+    /**
+     * Método principal que realiza la consulta para obtener el ID de la película "Poltergeist" y luego
+     * obtiene y muestra información sobre los premios que recibió dicha película.
+     *
+     * @param args Argumentos de la línea de comandos (no utilizados en este caso).
+     */
     public static void main(String[] args) {
         System.out.println(getPeliculaId());
         System.out.println(obtenerPremiosPoltergeist(getPeliculaId()));
@@ -53,8 +64,14 @@ public class SextaConsulta {
         return peliculaid;
     }
 
+    /**
+     * Método para obtener información sobre los premios recibidos por la película con el ID especificado.
+     *
+     * @param idPelicula El ID de la película para la cual se desea obtener información sobre premios.
+     * @return Una cadena que representa detalles sobre los premios recibidos por la película.
+     */
     public static String obtenerPremiosPoltergeist(String idPelicula) {
-        String winner = "";
+        String premios = "";
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://moviesminidatabase.p.rapidapi.com/movie/id/" + idPelicula + "/awards/"))
@@ -68,6 +85,6 @@ public class SextaConsulta {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return winner;
+        return premios;
     }
 }
